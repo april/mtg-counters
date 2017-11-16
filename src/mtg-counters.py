@@ -12,7 +12,7 @@ FORBIDDEN_COUNTERS = ('a', 'additional', 'all', 'and', 'another', 'does', 'each'
                       'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten')
 
 # Retrieve the list of cards with "counter" in the name using the Scryfall API
-#   re:"\bcounter\b" or re:"\bcounters\b" -oracle:"counter it" -oracle:"counter target"
+#   (re:"\bcounter\b" or re:"\bcounters\b") -oracle:"counter it" -oracle:"counter target"
 #     -oracle:"counter that" -oracle:"counter the" include:extras in:paper
 # In theory "counter that" hits Decree of Silence, but depletion counters are on other cards
 url = ('https://api.scryfall.com/cards/search?q='
