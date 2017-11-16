@@ -54,7 +54,7 @@ def get_counters(words: list, position: int, counters: list=[]):
     # https://scryfall.com/card/drk/45
     if word.endswith(','):
         get_counters(words, position - 2, counters)
-    elif words[position - 1] == 'or':
+    elif words[position - 2] == 'or':
         get_counters(words, position - 3, counters)
 
     return counters
