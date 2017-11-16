@@ -75,4 +75,3 @@ for page in pages:
 with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'dist', 'counters.txt'), 'w') as f:
     for counter in sorted(list(counters), key=lambda s: s.lower()):
         f.write(counter + '\n')
-    f.write('\n')
