@@ -3,12 +3,12 @@
 +1/+0
 +1/+1
 +1/+2
-+2/+0
 +2/+2
 -0/-1
 -0/-2
 -1/-0
 -1/-1
+-2/-1
 -2/-2
 age
 aim
@@ -24,6 +24,7 @@ cage
 carrion
 charge
 chip
+control
 corpse
 CRANK!
 credit
@@ -40,8 +41,10 @@ doom
 dream
 echo
 elixir
+energy
 eon
 experience
+eyeball
 fade
 fate
 feather
@@ -60,6 +63,7 @@ growth
 hatchling
 healing
 hoofprint
+hour
 hourglass
 hunger
 ice
@@ -116,9 +120,11 @@ spore
 storage
 strife
 study
+theft
 third-degree-burn
 tide
 time
+tower
 training
 trap
 treasure

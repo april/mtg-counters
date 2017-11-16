@@ -7,16 +7,16 @@ import requests
 COUNTER_WORDS = ('counter', 'counters')
 
 # A list of prepositions and what not that cannot be counter types
-FORBIDDEN_COUNTERS = ('a', 'additional', 'all', 'and', 'another', 'does', 'each',
+FORBIDDEN_COUNTERS = ('a', 'additional', 'all', 'and', 'another', 'does', 'each', 'had', 'have',
                       'may', 'more', 'moved', 'no', 'of', 'target', 'that', 'the', 'those', 'with', 'would', 'X',
                       'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten')
 
 # Retrieve the list of cards with "counter" in the name using the Scryfall API
-#   re:"\bcounter\b" -oracle:"counter it" -oracle:"counter target" \
-#   -oracle:"counter that" -oracle:"counter the" include:extras in:paper
+#   re:"\bcounter\b" or re:"\bcounters\b" -oracle:"counter it" -oracle:"counter target"
+#     -oracle:"counter that" -oracle:"counter the" include:extras in:paper
 # In theory "counter that" hits Decree of Silence, but depletion counters are on other cards
 url = ('https://api.scryfall.com/cards/search?q='
-       're%3A"\\bcounter\\b"+-oracle%3A"counter+it"'
+       '(re%3A"\\bcounter\\b"+or+re%3A"\\bcounters\\b")+-oracle%3A"counter+it"'
        '+-oracle%3A"counter+target"+-oracle%3A"counter+that"+-oracle%3A"counter+the"+include%3Aextras+in%3Apaper')
 session = requests.Session()
 
@@ -42,7 +42,7 @@ def get_counters(words: list, position: int, counters: list=[]):
         counters = []
 
     # Get the word prior to the current word, in theory it's a counter type
-    word = words[position]
+    word = words[position - 1]
     counter = word.replace(',', '')
 
     # If it's not in the preposition list, we can add it to the counters found at this position
@@ -53,9 +53,9 @@ def get_counters(words: list, position: int, counters: list=[]):
     # and keep searching for more counter types. See Frankenstein's Monster for a reason why we need to do this:
     # https://scryfall.com/card/drk/45
     if word.endswith(','):
-        get_counters(words, position - 1, counters)
-    elif words[position - 1] == 'or':
         get_counters(words, position - 2, counters)
+    elif words[position - 1] == 'or':
+        get_counters(words, position - 3, counters)
 
     return counters
 
@@ -69,7 +69,7 @@ for page in pages:
 
             for i in range(len(words)):
                 if words[i] in COUNTER_WORDS:
-                    [counters.add(counter) for counter in get_counters(words, i - 1)]
+                    [counters.add(counter) for counter in get_counters(words, i)]
 
 # Write the types to the types file
 with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'dist', 'counters.txt'), 'w') as f:
