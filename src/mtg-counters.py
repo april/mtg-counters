@@ -72,7 +72,7 @@ for page in pages:
                     [counters.add(counter) for counter in get_counters(words, i - 1)]
 
 # Write the types to the types file
-with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'dist', 'types.txt'), 'w') as f:
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'dist', 'counters.txt'), 'w') as f:
     for counter in sorted(list(counters), key=lambda s: s.lower()):
         f.write(counter + '\n')
     f.write('\n')
