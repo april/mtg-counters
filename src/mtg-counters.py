@@ -7,7 +7,7 @@ import requests
 COUNTER_WORDS = ('counter', 'counters')
 
 # A list of prepositions and what not that cannot be counter types
-FORBIDDEN_COUNTERS = ('a', 'additional', 'all', 'and', 'another', 'does', 'each', 'had', 'have',
+FORBIDDEN_COUNTERS = ('a', 'additional', 'all', 'and', 'another', 'does', 'each', 'get', 'had', 'have',
                       'may', 'more', 'moved', 'no', 'of', 'target', 'that', 'the', 'those', 'with', 'would', 'X',
                       'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten')
 
