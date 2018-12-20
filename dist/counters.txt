@@ -41,8 +41,8 @@ divinity
 doom
 dream
 echo
+egg
 elixir
-energy
 eon
 experience
 eyeball
@@ -57,12 +57,14 @@ funk
 fury
 fuse
 gem
+get
 globe
 glyph
 gold
 growth
 hatchling
 healing
+hit
 hoofprint
 hour
 hourglass
@@ -103,6 +105,7 @@ poison
 polyp
 pop
 pressure
+prey
 pupa
 quest
 rust
@@ -112,9 +115,11 @@ shell
 shield
 shoe
 shred
+silver
 sleep
 sleight
 slime
+slumber
 soot
 spite
 spore
